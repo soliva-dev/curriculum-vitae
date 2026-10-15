@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samuel Oliva | Desarrollador Backend Semi-Senior (Ssr.)</title>
+  <meta name="description"
+    content="Desarrollador Backend Semi-Senior en Córdoba, Argentina. PHP, Laravel, Node.js/NestJS, APIs REST, MVC, POO y bases de datos relacionales. CV interactivo con experiencia, proyectos y contacto directo." />
+  <meta name="author" content="Samuel Oliva" />
+  <meta name="theme-color" content="#0b1120" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Samuel Oliva | Desarrollador Backend Semi-Senior (Ssr.)" />
+  <meta property="og:description"
+    content="Backend Semi-Senior con base en PHP y ecosistema JavaScript. Más de 3 años de experiencia en liderazgo de equipos, APIs escalables y optimización de procesos." />
+  <meta property="og:locale" content="es_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN, misma versión que el diseño original) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+          },
+          colors: {
+            background: "hsl(var(--background))",
+            foreground: "hsl(var(--foreground))",
+            border: "hsl(var(--border))",
+            ring: "hsl(var(--ring))",
+            card: {
+              DEFAULT: "hsl(var(--card))",
+              foreground: "hsl(var(--card-foreground))"
+            },
+            secondary: {
+              DEFAULT: "hsl(var(--secondary))",
+              foreground: "hsl(var(--secondary-foreground))"
+            },
+            muted: {
+              foreground: "hsl(var(--muted-foreground))"
+            },
+            primary: {
+              DEFAULT: "hsl(var(--primary))",
+              foreground: "hsl(var(--primary-foreground))"
+            }
+          },
+          boxShadow: {
+            card: "var(--shadow-card)",
+            glow: "var(--shadow-glow)"
+          },
+          backgroundImage: {
+            "gradient-primary": "var(--gradient-primary)",
+            "gradient-card": "var(--gradient-card)"
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <!-- ======================================================== NAVBAR ===== -->
+  <header class="fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-xl">
+    <div class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+      <a href="#perfil" class="flex items-center gap-3">
+        <span
+          class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-primary text-sm font-bold text-primary-foreground shadow-glow">SO</span>
+        <span class="flex flex-col leading-tight">
+          <span class="text-sm font-semibold text-foreground">Samuel Oliva</span>
+          <span class="hidden text-[11px] text-muted-foreground sm:block">Desarrollador Backend Ssr.</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Secciones del CV">
+        <a href="#perfil" class="nav-link" data-section-link="perfil">Perfil</a>
+        <a href="#experiencia" class="nav-link" data-section-link="experiencia">Experiencia</a>
+        <a href="#proyectos" class="nav-link" data-section-link="proyectos">Proyectos</a>
+        <a href="#habilidades" class="nav-link" data-section-link="habilidades">Habilidades</a>
+        <a href="#contacto" class="nav-link" data-section-link="contacto">Contacto</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <span
+          class="hidden items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-[11px] font-semibold text-primary xl:flex">
+          <span class="relative flex h-2 w-2" aria-hidden="true">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+          </span>
+          Disponible para nuevas oportunidades
+        </span>
+
+        <a href="./cv-samuel-oliva.pdf" download class="btn btn-accent btn-sm hidden sm:inline-flex">
+          <i data-lucide="download"></i>
+          Descargar CV
+        </a>
+
+        <button type="button" id="menu-toggle" class="btn btn-subtle btn-icon lg:hidden"
+          aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =================================================== MENÚ MÓVIL ===== -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 hidden lg:hidden" aria-hidden="true">
+    <div id="mobile-menu-overlay" class="absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-300"></div>
+    <aside id="mobile-menu-panel"
+      class="absolute inset-y-0 right-0 flex w-72 max-w-[85%] translate-x-full flex-col overflow-y-auto border-l border-border bg-background p-6 transition-transform duration-300"
+      role="dialog" aria-modal="true" aria-label="Navegación">
+      <div class="flex items-center justify-between">
+        <h2 class="text-base font-semibold text-foreground">Navegación</h2>
+        <button type="button" id="menu-close" class="btn btn-subtle btn-icon" aria-label="Cerrar menú">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <nav class="mt-6 flex flex-col gap-1">
+        <a href="#perfil" class="menu-link">Perfil</a>
+        <a href="#experiencia" class="menu-link">Experiencia</a>
+        <a href="#proyectos" class="menu-link">Proyectos</a>
+        <a href="#habilidades" class="menu-link">Habilidades</a>
+        <a href="#contacto" class="menu-link">Contacto</a>
+      </nav>
+
+      <div class="mt-6 flex flex-col gap-2">
+        <a href="./cv-samuel-oliva.pdf" download class="btn btn-accent w-full">
+          <i data-lucide="download"></i>
+          Descargar CV
+        </a>
+        <a href="mailto:soliva.programmer@gmail.com" class="btn btn-outline-accent w-full">
+          <i data-lucide="mail"></i>
+          Enviar Email
+        </a>
+        <div class="flex gap-2">
+          <a href="https://www.linkedin.com/in/samueloliva" target="_blank" rel="noopener noreferrer"
+            class="btn btn-subtle flex-1">
+            <i data-lucide="linkedin"></i>
+            LinkedIn
+          </a>
+          <a href="https://github.com/soliva-dev" target="_blank" rel="noopener noreferrer"
+            class="btn btn-subtle flex-1">
+            <i data-lucide="github"></i>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <main>
+    <!-- ===================================================== PERFIL ===== -->
+    <section id="perfil" class="relative px-4 pt-28 pb-16 sm:px-6 sm:pt-32 lg:px-8 lg:pt-36">
+      <div
+        class="mx-auto grid w-full max-w-6xl items-start gap-12 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-14">
+        <div class="animate-fade-up">
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+            <span class="relative flex h-2 w-2" aria-hidden="true">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+            </span>
+            Disponible para nuevas oportunidades
+          </span>
+
+          <h1 class="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            Samuel Oliva
+          </h1>
+
+          <p class="mt-3 text-xl font-semibold tracking-tight text-gradient-accent sm:text-2xl">
+            Desarrollador Backend Semi-Senior (Ssr.)
+          </p>
+
+          <p class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+            <span class="inline-flex items-center gap-2">
+              <i data-lucide="map-pin" class="text-primary"></i>
+              Córdoba, Argentina
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <i data-lucide="phone" class="text-primary"></i>
+              +54 9 351 5303017
+            </span>
+          </p>
+
+          <p class="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-[15px] sm:leading-7">
+            Desarrollador Backend Semi-Senior (Ssr.) con base sólida en PHP y ecosistema JavaScript, enfocado en el
+            diseño, desarrollo y mantenimiento de APIs y servicios escalables. Combino un sólido trasfondo técnico con
+            más de 3 años de experiencia en liderazgo de equipos, gestión de métricas y optimización de procesos. Cuento
+            con experiencia trabajando bajo arquitecturas limpias (MVC), Programación Orientada a Objetos (POO) y bases
+            de datos relacionales. Orientado al rendimiento, la automatización de procesos apoyada en Inteligencia
+            Artificial y la calidad del código, colaborando de manera proactiva con equipos multidisciplinarios para
+            entregar soluciones robustas alineadas a las necesidades del negocio.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-2.5">
+            <a href="./cv-samuel-oliva.pdf" download class="btn btn-accent btn-lg">
+              <i data-lucide="download"></i>
+              Descargar CV (PDF)
+            </a>
+            <a href="mailto:soliva.programmer@gmail.com" class="btn btn-outline-accent btn-lg">
+              <i data-lucide="mail"></i>
+              Enviar Email
+            </a>
+            <a href="https://www.linkedin.com/in/samueloliva" target="_blank" rel="noopener noreferrer"
+              class="btn btn-subtle btn-lg">
+              <i data-lucide="linkedin"></i>
+              LinkedIn
+            </a>
+            <a href="https://github.com/soliva-dev" target="_blank" rel="noopener noreferrer"
+              class="btn btn-subtle btn-lg">
+              <i data-lucide="github"></i>
+              GitHub
+            </a>
+          </div>
+
+          <dl class="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <div class="card px-4 py-4">
+              <dt class="text-xl font-bold tracking-tight text-primary sm:text-2xl">+3 años</dt>
+              <dd class="mt-1.5 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+                en liderazgo de equipos y gestión de métricas
+              </dd>
+            </div>
+            <div class="card px-4 py-4">
+              <dt class="text-xl font-bold tracking-tight text-primary sm:text-2xl">18</dt>
+              <dd class="mt-1.5 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+                personas lideradas en la cuenta Banco Galicia
+              </dd>
+            </div>
+            <div class="card px-4 py-4">
+              <dt class="text-xl font-bold tracking-tight text-primary sm:text-2xl">PHP</dt>
+              <dd class="mt-1.5 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+                y ecosistema JavaScript para APIs escalables
+              </dd>
+            </div>
+            <div class="card px-4 py-4">
+              <dt class="text-xl font-bold tracking-tight text-primary sm:text-2xl">MVC · POO</dt>
+              <dd class="mt-1.5 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+                arquitecturas limpias y bases relacionales
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="card card-elevated animate-fade-up" style="animation-delay: 120ms">
+          <div class="flex flex-col items-center gap-6 p-6 sm:p-8">
+            <!-- Para usar tu foto real: guarda la imagen en esta misma carpeta, borra el
+                 bloque con borde discontinuo y pega esto en su lugar:
+                 <img src="./foto-samuel-oliva.jpg" alt="Foto de perfil de Samuel Oliva"
+                      class="h-36 w-36 rounded-2xl border border-border object-cover shadow-glow sm:h-44 sm:w-44" />
+            -->
+            <div class="flex flex-col items-center gap-3">
+              <div
+                class="relative flex h-36 w-36 items-center justify-center rounded-2xl border-2 border-dashed border-border bg-secondary/40 sm:h-44 sm:w-44">
+                <div class="flex flex-col items-center gap-2 px-3 text-center">
+                  <span class="ico-lg text-muted-foreground"><i data-lucide="user-round"></i></span>
+                  <span class="text-3xl font-bold tracking-tight text-foreground">SO</span>
+                </div>
+                <span
+                  class="absolute -bottom-3 -right-3 flex items-center gap-1.5 rounded-full border border-primary/40 bg-background px-2.5 py-1 text-[10px] font-semibold text-primary shadow-card">
+                  <i data-lucide="upload"></i>
+                  Foto pendiente
+                </span>
+              </div>
+              <p class="max-w-[15rem] text-center text-[11px] leading-relaxed text-muted-foreground">
+                Espacio reservado para tu foto real. Guarda la imagen en esta carpeta y reemplaza este bloque por la
+                etiqueta <span class="font-medium text-foreground">&lt;img&gt;</span> indicada en el comentario de
+                <span class="font-medium text-foreground">index.html</span>.
+              </p>
+            </div>
+
+            <div class="h-px w-full bg-border" aria-hidden="true"></div>
+
+            <ul class="w-full space-y-3">
+              <li>
+                <a href="mailto:soliva.programmer@gmail.com" class="contact-link">
+                  <span class="icon-chip"><i data-lucide="mail"></i></span>
+                  <span class="flex min-w-0 flex-col">
+                    <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Email</span>
+                    <span class="truncate text-sm font-medium text-foreground">soliva.programmer@gmail.com</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+5493515303017" class="contact-link">
+                  <span class="icon-chip"><i data-lucide="phone"></i></span>
+                  <span class="flex min-w-0 flex-col">
+                    <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Teléfono</span>
+                    <span class="truncate text-sm font-medium text-foreground">+54 9 351 5303017</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <div class="flex items-center gap-3 p-1">
+                  <span class="icon-chip"><i data-lucide="map-pin"></i></span>
+                  <span class="flex min-w-0 flex-col">
+                    <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Ubicación</span>
+                    <span class="truncate text-sm font-medium text-foreground">Córdoba, Argentina</span>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/samueloliva" target="_blank" rel="noopener noreferrer"
+                  class="contact-link">
+                  <span class="icon-chip"><i data-lucide="linkedin"></i></span>
+                  <span class="flex min-w-0 flex-col">
+                    <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">LinkedIn</span>
+                    <span class="truncate text-sm font-medium text-foreground">linkedin.com/in/samueloliva</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/soliva-dev" target="_blank" rel="noopener noreferrer" class="contact-link">
+                  <span class="icon-chip"><i data-lucide="github"></i></span>
+                  <span class="flex min-w-0 flex-col">
+                    <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">GitHub</span>
+                    <span class="truncate text-sm font-medium text-foreground">github.com/soliva-dev</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================= EXPERIENCIA ===== -->
+    <section id="experiencia" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <div class="mx-auto w-full max-w-6xl">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3">
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            <span class="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Trayectoria</span>
+          </div>
+          <h2 class="mt-4 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+            Experiencia profesional
+          </h2>
+          <p class="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            De la gestión administrativa y el liderazgo de equipos al desarrollo backend: cada etapa aportó rigor en
+            métricas, procesos y comunicación con el negocio.
+          </p>
+        </div>
+
+        <ol class="relative mt-12 space-y-6">
+          <span aria-hidden="true" class="timeline-line absolute bottom-4 left-[7px] top-4 w-px"></span>
+
+          <!-- Desarrollador Backend · Legajos Online -->
+          <li class="relative flex gap-4 sm:gap-6">
+            <span
+              class="relative z-10 mt-7 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-primary/20"
+              aria-hidden="true">
+              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            </span>
+            <div class="card card-interactive min-w-0 flex-1">
+              <div class="p-5 sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                  <div class="min-w-0">
+                    <h3 class="text-base font-semibold tracking-tight text-foreground sm:text-lg">
+                      Desarrollador Backend
+                    </h3>
+                    <p class="mt-1 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                      <i data-lucide="briefcase"></i>
+                      Legajos Online
+                    </p>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="badge badge-soft">
+                      <i data-lucide="calendar"></i>
+                      Junio 2024 - Actualidad
+                    </span>
+                    <span class="badge badge-tech">Actualidad</span>
+                  </div>
+                </div>
+
+                <ul class="mt-4 space-y-2.5">
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Desarrollo de nuevas funcionalidades y módulos para el sistema de gestión de recursos humanos,
+                      digitalizando y agilizando procesos clave.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Mantenimiento, optimización y refactorización de código existente para escalabilidad y
+                      reducción de bugs.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Detección, análisis y corrección de errores del lado del servidor para garantizar estabilidad y
+                      eficiencia.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Integración con APIs de terceros y administración eficiente de bases de datos relacionales
+                      (MySQL, SQL).</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Desarrollo estructurado aplicando metodologías MVC y buenas prácticas de seguridad.</span>
+                  </li>
+                </ul>
+
+                <div class="mt-5 flex flex-wrap gap-2 border-t border-border/70 pt-4">
+                  <span class="badge badge-tech">MVC</span>
+                  <span class="badge badge-tech">MySQL</span>
+                  <span class="badge badge-tech">SQL</span>
+                  <span class="badge badge-tech">APIs de terceros</span>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Team Leader · VN Global BPO -->
+          <li class="relative flex gap-4 sm:gap-6">
+            <span
+              class="relative z-10 mt-7 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 border-border bg-background"
+              aria-hidden="true"></span>
+            <div class="card card-interactive min-w-0 flex-1">
+              <div class="p-5 sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                  <div class="min-w-0">
+                    <h3 class="text-base font-semibold tracking-tight text-foreground sm:text-lg">
+                      Team Leader, Operador &amp; Referente Operativo
+                    </h3>
+                    <p class="mt-1 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                      <i data-lucide="briefcase"></i>
+                      VN Global BPO
+                    </p>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="badge badge-soft">
+                      <i data-lucide="calendar"></i>
+                      May 2021 - Jun 2024
+                    </span>
+                  </div>
+                </div>
+
+                <ul class="mt-4 space-y-2.5">
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span><span class="font-semibold text-foreground">Gestión de Equipos y Liderazgo: </span>Liderazgo
+                      directo de un equipo de 18 personas (Cuenta Banco Galicia), supervisando métricas de rendimiento
+                      (KPIs), planes de acción (PDA) y cobertura de canales digitales.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span><span class="font-semibold text-foreground">Análisis de Datos y Reportes: </span>Diseño y
+                      automatización de planillas formuladas en Excel para el control visual de liquidaciones, seguimiento
+                      de métricas operativas y control de presentismo.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span><span class="font-semibold text-foreground">Garantía de Calidad y Procesos: </span>Confección y
+                      dictado de capacitaciones sobre refuerzo de procesos, auditorías de calidad y cobertura de rol de
+                      Supervisor en periodos vacacionales.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span><span class="font-semibold text-foreground">Atención y Fidelización: </span>Gestión de cuentas
+                      críticas (Sancor Salud), resolución de incidencias complejas y cobranzas corporativas.</span>
+                  </li>
+                </ul>
+
+                <div class="mt-5 flex flex-wrap gap-2 border-t border-border/70 pt-4">
+                  <span class="badge badge-tech">Liderazgo de 18 personas</span>
+                  <span class="badge badge-tech">KPIs</span>
+                  <span class="badge badge-tech">Excel</span>
+                  <span class="badge badge-tech">Calidad</span>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Responsable Administrativo · Servycom -->
+          <li class="relative flex gap-4 sm:gap-6">
+            <span
+              class="relative z-10 mt-7 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 border-border bg-background"
+              aria-hidden="true"></span>
+            <div class="card card-interactive min-w-0 flex-1">
+              <div class="p-5 sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                  <div class="min-w-0">
+                    <h3 class="text-base font-semibold tracking-tight text-foreground sm:text-lg">
+                      Responsable Administrativo
+                    </h3>
+                    <p class="mt-1 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                      <i data-lucide="briefcase"></i>
+                      Servycom Telecomunicaciones SRL
+                    </p>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="badge badge-soft">
+                      <i data-lucide="calendar"></i>
+                      Junio 2017 - Abril 2018
+                    </span>
+                  </div>
+                </div>
+
+                <ul class="mt-4 space-y-2.5">
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Gestión integral de documentación laboral y control de procesos de tercerización.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Control y gestión de declaraciones juradas impositivas, Libro IVA, Libro Diario y
+                      Mayorización.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Programación y control de pagos a proveedores, empleados, subcontratistas e impuestos.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Gestión del proceso completo de facturación y control de movimientos bancarios.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <!-- Tesorero · Servycom -->
+          <li class="relative flex gap-4 sm:gap-6">
+            <span
+              class="relative z-10 mt-7 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 border-border bg-background"
+              aria-hidden="true"></span>
+            <div class="card card-interactive min-w-0 flex-1">
+              <div class="p-5 sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                  <div class="min-w-0">
+                    <h3 class="text-base font-semibold tracking-tight text-foreground sm:text-lg">Tesorero</h3>
+                    <p class="mt-1 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                      <i data-lucide="briefcase"></i>
+                      Servycom Telecomunicaciones SRL
+                    </p>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="badge badge-soft">
+                      <i data-lucide="calendar"></i>
+                      Junio 2016 - Mayo 2017
+                    </span>
+                  </div>
+                </div>
+
+                <ul class="mt-4 space-y-2.5">
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Manejo de caja, confección de cheques y ejecución de pagos a proveedores y empleados.</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Gestión de transferencias, transacciones bancarias, y apertura de cuentas sueldo (1 persona a
+                      cargo).</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Confección de informes financieros, contables y de retenciones.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <!-- Auxiliar Administrativo · Servycom -->
+          <li class="relative flex gap-4 sm:gap-6">
+            <span
+              class="relative z-10 mt-7 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 border-border bg-background"
+              aria-hidden="true"></span>
+            <div class="card card-interactive min-w-0 flex-1">
+              <div class="p-5 sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                  <div class="min-w-0">
+                    <h3 class="text-base font-semibold tracking-tight text-foreground sm:text-lg">
+                      Auxiliar Administrativo
+                    </h3>
+                    <p class="mt-1 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                      <i data-lucide="briefcase"></i>
+                      Servycom Telecomunicaciones SRL
+                    </p>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="badge badge-soft">
+                      <i data-lucide="calendar"></i>
+                      Marzo 2016 - Julio 2016
+                    </span>
+                  </div>
+                </div>
+
+                <ul class="mt-4 space-y-2.5">
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Soporte administrativo al Departamento Técnico y gestión de ingresos a sitios de
+                      telecomunicaciones (Claro).</span>
+                  </li>
+                  <li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true"></span>
+                    <span>Carga de gastos de obra, control de facturas y confección de órdenes de compra.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================================================== PROYECTOS ===== -->
+    <section id="proyectos" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <div class="mx-auto w-full max-w-6xl">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3">
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            <span class="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Trabajo real</span>
+          </div>
+          <h2 class="mt-4 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+            Proyectos destacados
+          </h2>
+          <p class="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Productos y APIs construidas de punta a punta: arquitectura MVC, autenticación segura y servicios REST. Cada
+            tarjeta enlaza al código o a la demo en vivo.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div class="card card-interactive flex">
+            <div class="flex h-full flex-col gap-4 p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-base font-semibold tracking-tight text-foreground">Turnerito App</h3>
+                <span class="badge badge-tech">SaaS en Desarrollo</span>
+              </div>
+              <p class="text-sm leading-relaxed text-muted-foreground">
+                Desarrollo integral de un sistema web comercial para la gestión de turnos. Construido desde cero
+                aplicando arquitectura MVC y PHP, enfocado en la escalabilidad y resoluciones complejas.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-soft">PHP</span>
+                <span class="badge badge-soft">MVC</span>
+                <span class="badge badge-soft">SaaS</span>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2 border-t border-border/70 pt-4">
+                <a href="https://turneritoapp.com/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-outline-accent btn-sm">
+                  <i data-lucide="external-link"></i>
+                  Ver Landing Page
+                </a>
+                <a href="https://github.com/turneritoapp/turnerito-docs" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-subtle btn-sm">
+                  <i data-lucide="github"></i>
+                  Repositorio público
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-interactive flex">
+            <div class="flex h-full flex-col gap-4 p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-base font-semibold tracking-tight text-foreground">
+                  Sistema de Autenticación E-commerce
+                </h3>
+              </div>
+              <p class="text-sm leading-relaxed text-muted-foreground">
+                Desarrollo de un sistema seguro de registro, inicio de sesión y gestión de sesiones de usuarios.
+              </p>
+              <div class="mt-auto flex flex-wrap gap-2 border-t border-border/70 pt-4">
+                <a href="https://github.com/soliva-dev/ecommerce-auth-system.coder-project" target="_blank"
+                  rel="noopener noreferrer" class="btn btn-subtle btn-sm">
+                  <i data-lucide="github"></i>
+                  Ver Repositorio
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-interactive flex">
+            <div class="flex h-full flex-col gap-4 p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-base font-semibold tracking-tight text-foreground">API AdoptMe</h3>
+              </div>
+              <p class="text-sm leading-relaxed text-muted-foreground">
+                Construcción de una API RESTful escalable aplicando buenas prácticas de arquitectura de software.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-soft">API RESTful</span>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2 border-t border-border/70 pt-4">
+                <a href="https://github.com/soliva-dev/api-adoptme.coder-project" target="_blank"
+                  rel="noopener noreferrer" class="btn btn-subtle btn-sm">
+                  <i data-lucide="github"></i>
+                  Ver Repositorio
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-interactive flex">
+            <div class="flex h-full flex-col gap-4 p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-base font-semibold tracking-tight text-foreground">Proyecto Bienes Raíces</h3>
+              </div>
+              <p class="text-sm leading-relaxed text-muted-foreground">
+                Aplicación web dinámica desarrollada con PHP, MySQL y arquitectura MVC.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-soft">PHP</span>
+                <span class="badge badge-soft">MySQL</span>
+                <span class="badge badge-soft">MVC</span>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2 border-t border-border/70 pt-4">
+                <a href="https://github.com/soliva-dev/bienesraices-project" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-subtle btn-sm">
+                  <i data-lucide="github"></i>
+                  Ver Repositorio
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-interactive flex">
+            <div class="flex h-full flex-col gap-4 p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-base font-semibold tracking-tight text-foreground">Gestor de Turnos</h3>
+              </div>
+              <p class="text-sm leading-relaxed text-muted-foreground">
+                Plataforma funcional con sistema de login para la asignación de turnos.
+              </p>
+              <div class="mt-auto flex flex-wrap gap-2 border-t border-border/70 pt-4">
+                <a href="https://github.com/soliva-dev/gestor-turnos.coder-project" target="_blank"
+                  rel="noopener noreferrer" class="btn btn-subtle btn-sm">
+                  <i data-lucide="github"></i>
+                  Ver Repositorio
+                </a>
+                <a href="https://soliva-dev.github.io/gestor-turnos.coder-project/login.html" target="_blank"
+                  rel="noopener noreferrer" class="btn btn-subtle btn-sm">
+                  <i data-lucide="external-link"></i>
+                  Ver Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16">
+          <div class="flex items-center gap-3">
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            <h3 class="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+              Otros proyectos y repositorios
+            </h3>
+          </div>
+
+          <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="card card-interactive">
+              <div class="flex h-full flex-col gap-4 p-5">
+                <div>
+                  <h4 class="text-sm font-semibold text-foreground">API Productos</h4>
+                  <p class="mt-1 text-xs text-muted-foreground">API REST de productos</p>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-2">
+                  <a href="https://github.com/soliva-dev/api-productos.coder-project" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="github"></i>
+                    Repo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-interactive">
+              <div class="flex h-full flex-col gap-4 p-5">
+                <div>
+                  <h4 class="text-sm font-semibold text-foreground">Legajos Online</h4>
+                  <p class="mt-1 text-xs text-muted-foreground">Proyecto / Demo</p>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-2">
+                  <a href="https://github.com/soliva-dev/legajos.online.coder-project" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="github"></i>
+                    Repo
+                  </a>
+                  <a href="https://soliva-dev.github.io/legajos.online.coder-project/" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="external-link"></i>
+                    Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-interactive">
+              <div class="flex h-full flex-col gap-4 p-5">
+                <div>
+                  <h4 class="text-sm font-semibold text-foreground">E-commerce Coffee</h4>
+                  <p class="mt-1 text-xs text-muted-foreground">Tienda online de café</p>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-2">
+                  <a href="https://github.com/soliva-dev/ecommerce-coffee.coder-project" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="github"></i>
+                    Repo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-interactive">
+              <div class="flex h-full flex-col gap-4 p-5">
+                <div>
+                  <h4 class="text-sm font-semibold text-foreground">Blog del Café</h4>
+                  <p class="mt-1 text-xs text-muted-foreground">Blog con PHP y MySQL</p>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-2">
+                  <a href="https://github.com/soliva-dev/blogdelcafe-project" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="github"></i>
+                    Repo
+                  </a>
+                  <a href="https://soliva-dev.github.io/blogdelcafe-project/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="external-link"></i>
+                    Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-interactive">
+              <div class="flex h-full flex-col gap-4 p-5">
+                <div>
+                  <h4 class="text-sm font-semibold text-foreground">EDM Festival</h4>
+                  <p class="mt-1 text-xs text-muted-foreground">Landing de festival de música</p>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-2">
+                  <a href="https://github.com/soliva-dev/EDMFestival-Project" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="github"></i>
+                    Repo
+                  </a>
+                  <a href="https://soliva-dev.github.io/EDMFestival-Project/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="external-link"></i>
+                    Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-interactive">
+              <div class="flex h-full flex-col gap-4 p-5">
+                <div>
+                  <h4 class="text-sm font-semibold text-foreground">Frontend Store</h4>
+                  <p class="mt-1 text-xs text-muted-foreground">E-commerce de indumentaria</p>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-2">
+                  <a href="https://github.com/soliva-dev/frontend-store-project" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="github"></i>
+                    Repo
+                  </a>
+                  <a href="https://soliva-dev.github.io/frontend-store-project/" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="external-link"></i>
+                    Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-interactive">
+              <div class="flex h-full flex-col gap-4 p-5">
+                <div>
+                  <h4 class="text-sm font-semibold text-foreground">Reloj JS</h4>
+                  <p class="mt-1 text-xs text-muted-foreground">Reloj digital con JavaScript</p>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-2">
+                  <a href="https://github.com/soliva-dev/reloj_js" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="github"></i>
+                    Repo
+                  </a>
+                  <a href="https://soliva-dev.github.io/reloj_js/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-subtle btn-sm h-8 px-2.5 text-xs">
+                    <i data-lucide="external-link"></i>
+                    Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ HABILIDADES ===== -->
+    <section id="habilidades" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <div class="mx-auto w-full max-w-6xl">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3">
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            <span class="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Stack &amp; Formación</span>
+          </div>
+          <h2 class="mt-4 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+            Conocimientos técnicos y formación
+          </h2>
+          <p class="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Tecnologías con las que trabajo, herramientas de IA que uso para optimizar código y la formación que
+            sostiene la base técnica.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="card card-elevated">
+            <div class="flex h-full flex-col gap-4 p-5">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="code-xml"></i></span>
+                <h3 class="text-sm font-semibold text-foreground">Desarrollo Backend</h3>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge badge-soft text-[11px] font-medium">PHP</span>
+                <span class="badge badge-soft text-[11px] font-medium">Laravel</span>
+                <span class="badge badge-soft text-[11px] font-medium">Symfony</span>
+                <span class="badge badge-soft text-[11px] font-medium">Node.js</span>
+                <span class="badge badge-soft text-[11px] font-medium">NestJS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-elevated">
+            <div class="flex h-full flex-col gap-4 p-5">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="monitor"></i></span>
+                <h3 class="text-sm font-semibold text-foreground">Desarrollo Frontend</h3>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge badge-soft text-[11px] font-medium">JavaScript</span>
+                <span class="badge badge-soft text-[11px] font-medium">React</span>
+                <span class="badge badge-soft text-[11px] font-medium">jQuery</span>
+                <span class="badge badge-soft text-[11px] font-medium">AJAX</span>
+                <span class="badge badge-soft text-[11px] font-medium">HTML5</span>
+                <span class="badge badge-soft text-[11px] font-medium">CSS3</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-elevated">
+            <div class="flex h-full flex-col gap-4 p-5">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="database"></i></span>
+                <h3 class="text-sm font-semibold text-foreground">Bases de Datos</h3>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge badge-soft text-[11px] font-medium">MySQL</span>
+                <span class="badge badge-soft text-[11px] font-medium">SQL</span>
+                <span class="badge badge-soft text-[11px] font-medium">MongoDB (NoSQL)</span>
+                <span class="badge badge-soft text-[11px] font-medium">phpMyAdmin</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-elevated">
+            <div class="flex h-full flex-col gap-4 p-5">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="sparkles"></i></span>
+                <h3 class="text-sm font-semibold text-foreground">Herramientas de IA &amp; Productividad</h3>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge badge-soft text-[11px] font-medium">Prompt Engineering</span>
+                <span class="badge badge-soft text-[11px] font-medium">ChatGPT</span>
+                <span class="badge badge-soft text-[11px] font-medium">GitHub Copilot</span>
+                <span class="badge badge-soft text-[11px] font-medium">IA generativa para optimización de código</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-elevated">
+            <div class="flex h-full flex-col gap-4 p-5">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="boxes"></i></span>
+                <h3 class="text-sm font-semibold text-foreground">Arquitectura &amp; Paradigmas</h3>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge badge-soft text-[11px] font-medium">API REST</span>
+                <span class="badge badge-soft text-[11px] font-medium">MVC</span>
+                <span class="badge badge-soft text-[11px] font-medium">POO (Programación Orientada a Objetos)</span>
+                <span class="badge badge-soft text-[11px] font-medium">PE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-elevated">
+            <div class="flex h-full flex-col gap-4 p-5">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="git-branch"></i></span>
+                <h3 class="text-sm font-semibold text-foreground">Control de Versiones</h3>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge badge-soft text-[11px] font-medium">Git</span>
+                <span class="badge badge-soft text-[11px] font-medium">GitHub</span>
+                <span class="badge badge-soft text-[11px] font-medium">Bitbucket</span>
+                <span class="badge badge-soft text-[11px] font-medium">Composer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-elevated">
+            <div class="flex h-full flex-col gap-4 p-5">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="terminal"></i></span>
+                <h3 class="text-sm font-semibold text-foreground">Entornos</h3>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge badge-soft text-[11px] font-medium">Postman</span>
+                <span class="badge badge-soft text-[11px] font-medium">Terminal (Linux/Bash)</span>
+                <span class="badge badge-soft text-[11px] font-medium">Visual Studio Code</span>
+                <span class="badge badge-soft text-[11px] font-medium">XAMPP</span>
+                <span class="badge badge-soft text-[11px] font-medium">WAMPP</span>
+                <span class="badge badge-soft text-[11px] font-medium">Apache</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-elevated">
+            <div class="flex h-full flex-col gap-4 p-5">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="list-checks"></i></span>
+                <h3 class="text-sm font-semibold text-foreground">Metodologías</h3>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge badge-soft text-[11px] font-medium">Scrum</span>
+                <span class="badge badge-soft text-[11px] font-medium">Kanban</span>
+                <span class="badge badge-soft text-[11px] font-medium">Jira</span>
+                <span class="badge badge-soft text-[11px] font-medium">Trello</span>
+                <span class="badge badge-soft text-[11px] font-medium">Asana</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+          <div class="card">
+            <div class="p-6">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="graduation-cap"></i></span>
+                <h3 class="text-sm font-semibold uppercase tracking-[0.16em] text-foreground">
+                  Educación y Formación
+                </h3>
+              </div>
+
+              <ul class="mt-5 space-y-3">
+                <li
+                  class="flex flex-col gap-1 rounded-lg border border-border/70 bg-secondary/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                  <span class="text-sm font-medium text-foreground">Desarrollo con IA: de 0 a Producción</span>
+                  <span class="text-xs font-semibold text-primary">BIG school</span>
+                </li>
+                <li
+                  class="flex flex-col gap-1 rounded-lg border border-border/70 bg-secondary/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                  <span class="text-sm font-medium text-foreground">Carrera de Desarrollo Web Full Stack</span>
+                  <span class="text-xs font-semibold text-primary">Coderhouse</span>
+                </li>
+                <li
+                  class="flex flex-col gap-1 rounded-lg border border-border/70 bg-secondary/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                  <span class="text-sm font-medium text-foreground">Desarrollo Web en PHP, MVC, POO y MySQL - Tienda
+                    Virtual</span>
+                  <span class="text-xs font-semibold text-primary">Udemy</span>
+                </li>
+                <li
+                  class="flex flex-col gap-1 rounded-lg border border-border/70 bg-secondary/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                  <span class="text-sm font-medium text-foreground">Desarrollo Web Completo con HTML5, CSS3, JS, AJAX,
+                    PHP y MySQL</span>
+                  <span class="text-xs font-semibold text-primary">Udemy</span>
+                </li>
+                <li
+                  class="flex flex-col gap-1 rounded-lg border border-border/70 bg-secondary/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                  <span class="text-sm font-medium text-foreground">Estudios Universitarios</span>
+                  <span class="text-xs font-semibold text-primary">Colegio Universitario IES Siglo 21</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="p-6">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-chip-accent"><i data-lucide="languages"></i></span>
+                <h3 class="text-sm font-semibold uppercase tracking-[0.16em] text-foreground">Idiomas</h3>
+              </div>
+
+              <ul class="mt-5 space-y-3">
+                <li
+                  class="flex items-center justify-between rounded-lg border border-border/70 bg-secondary/30 px-4 py-3">
+                  <span class="text-sm font-medium text-foreground">Español</span>
+                  <span class="badge badge-tech">Nativo</span>
+                </li>
+                <li
+                  class="flex items-center justify-between rounded-lg border border-border/70 bg-secondary/30 px-4 py-3">
+                  <span class="text-sm font-medium text-foreground">Inglés</span>
+                  <span class="badge badge-tech">Básico-Intermedio</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================== CONTACTO ===== -->
+    <section id="contacto" class="px-4 pb-10 pt-16 sm:px-6 lg:px-8 lg:pt-20">
+      <div class="mx-auto w-full max-w-6xl">
+        <div class="card card-elevated overflow-hidden">
+          <div class="p-6 sm:p-10">
+            <div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              <div class="max-w-2xl">
+                <h2 class="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                  ¿Buscas un perfil backend para tu equipo?
+                </h2>
+                <p class="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  Estoy abierto a nuevas oportunidades como Desarrollador Backend. Puedo contarte en detalle sobre mi
+                  experiencia con APIs, arquitectura MVC y bases de datos relacionales, o enviarte el CV completo en
+                  PDF.
+                </p>
+
+                <div class="mt-7 flex flex-wrap gap-2.5">
+                  <a href="mailto:soliva.programmer@gmail.com" class="btn btn-accent btn-lg">
+                    <i data-lucide="mail"></i>
+                    Enviar Email directo
+                  </a>
+                  <a href="./cv-samuel-oliva.pdf" download class="btn btn-outline-accent btn-lg">
+                    <i data-lucide="download"></i>
+                    Descargar CV
+                  </a>
+                </div>
+              </div>
+
+              <ul class="flex w-full flex-col gap-3 lg:max-w-sm">
+                <li>
+                  <a href="mailto:soliva.programmer@gmail.com" class="contact-panel">
+                    <span class="icon-chip"><i data-lucide="mail"></i></span>
+                    <span class="truncate text-sm font-medium text-foreground">soliva.programmer@gmail.com</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+5493515303017" class="contact-panel">
+                    <span class="icon-chip"><i data-lucide="phone"></i></span>
+                    <span class="truncate text-sm font-medium text-foreground">+54 9 351 5303017</span>
+                  </a>
+                </li>
+                <li>
+                  <div class="contact-panel">
+                    <span class="icon-chip"><i data-lucide="map-pin"></i></span>
+                    <span class="truncate text-sm font-medium text-foreground">Córdoba, Argentina</span>
+                  </div>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/samueloliva" target="_blank" rel="noopener noreferrer"
+                    class="contact-panel">
+                    <span class="icon-chip"><i data-lucide="linkedin"></i></span>
+                    <span class="truncate text-sm font-medium text-foreground">linkedin.com/in/samueloliva</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/soliva-dev" target="_blank" rel="noopener noreferrer"
+                    class="contact-panel">
+                    <span class="icon-chip"><i data-lucide="github"></i></span>
+                    <span class="truncate text-sm font-medium text-foreground">github.com/soliva-dev</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 sm:flex-row">
+          <p class="text-xs text-muted-foreground">
+            © <span data-year>2026</span> Samuel Oliva · Desarrollador Backend Semi-Senior (Ssr.)
+          </p>
+          <p class="text-xs text-muted-foreground">Córdoba, Argentina · CV interactivo</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.542.0/dist/umd/lucide.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
