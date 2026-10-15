@@ -69,20 +69,9 @@
   --scrollbar-thumb: 214 20% 75%;
 }
 
-.theme-icon-sun {
+.theme-toggle-icon {
   display: inline-flex;
-}
-
-.theme-icon-moon {
-  display: none;
-}
-
-[data-theme="light"] .theme-icon-sun {
-  display: none;
-}
-
-[data-theme="light"] .theme-icon-moon {
-  display: inline-flex;
+  align-items: center;
 }
 
 /* ---------------------------------------------------------------- base ---- */

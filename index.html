@@ -80,7 +80,7 @@
       }
     };
   </script>
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=20261015-ios-theme" />
 </head>
 
 <body>
@@ -121,8 +121,7 @@
 
         <button type="button" id="theme-toggle" class="btn btn-subtle btn-icon" aria-label="Cambiar a modo oscuro"
           title="Cambiar a modo oscuro">
-          <i data-lucide="sun" class="theme-icon-sun" aria-hidden="true"></i>
-          <i data-lucide="moon" class="theme-icon-moon" aria-hidden="true"></i>
+          <span class="theme-toggle-icon" aria-hidden="true"><i data-lucide="moon"></i></span>
         </button>
 
         <button type="button" id="menu-toggle" class="btn btn-subtle btn-icon lg:hidden"
@@ -170,9 +169,8 @@
         </a>
         <button type="button" id="theme-toggle-mobile" class="btn btn-subtle w-full"
           aria-label="Cambiar a modo oscuro">
-          <i data-lucide="sun" class="theme-icon-sun" aria-hidden="true"></i>
-          <i data-lucide="moon" class="theme-icon-moon" aria-hidden="true"></i>
-          <span>Cambiar a modo claro</span>
+          <span class="theme-toggle-icon" aria-hidden="true"><i data-lucide="moon"></i></span>
+          <span class="theme-toggle-label">Cambiar a modo oscuro</span>
         </button>
         <div class="flex gap-2">
           <a href="https://www.linkedin.com/in/samueloliva" target="_blank" rel="noopener noreferrer"
@@ -1265,7 +1263,7 @@
   </main>
 
   <script src="https://unpkg.com/lucide@0.542.0/dist/umd/lucide.min.js"></script>
-  <script src="./script.js"></script>
+  <script src="./script.js?v=20261015-ios-theme"></script>
 </body>
 
 </html>

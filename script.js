@@ -1,9 +1,10 @@
 /**
  * CV interactivo — lógica de la versión estática.
  * 1. Renderiza los iconos de lucide sobre los placeholders <i data-lucide="...">.
- * 2. Menú móvil (abrir / cerrar, overlay, Escape, click en enlaces).
- * 3. Resalta la sección visible en la navegación.
- * 4. Año dinámico en el pie.
+ * 2. Alterna entre temas claro y oscuro y guarda la preferencia.
+ * 3. Menú móvil (abrir / cerrar, overlay, Escape, click en enlaces).
+ * 4. Resalta la sección visible en la navegación.
+ * 5. Año dinámico en el pie.
  */
 (function () {
   "use strict";
@@ -29,11 +30,21 @@
       root.dataset.theme = theme;
       var nextTheme = theme === "dark" ? "light" : "dark";
       var label = "Cambiar a modo " + (nextTheme === "light" ? "claro" : "oscuro");
+      var iconName = nextTheme === "light" ? "sun" : "moon";
 
       buttons.forEach(function (button) {
         button.setAttribute("aria-label", label);
         button.setAttribute("title", label);
-        var text = button.querySelector("span");
+        var iconContainer = button.querySelector(".theme-toggle-icon");
+        if (iconContainer) {
+          while (iconContainer.firstChild) {
+            iconContainer.removeChild(iconContainer.firstChild);
+          }
+          var icon = document.createElement("i");
+          icon.setAttribute("data-lucide", iconName);
+          iconContainer.appendChild(icon);
+        }
+        var text = button.querySelector(".theme-toggle-label");
         if (text) {
           text.textContent = label;
         }
