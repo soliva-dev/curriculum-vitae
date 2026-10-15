@@ -1,6 +1,6 @@
 /* ==========================================================================
    Samuel Oliva — CV interactivo (versión estática para GitHub Pages)
-   Tokens de diseño en modo oscuro + componentes del sistema.
+   Tokens de diseño para ambos temas + componentes del sistema.
    ========================================================================== */
 
 :root {
@@ -32,8 +32,57 @@
 
   --shadow-card: 0 18px 40px -24px hsl(222 70% 2% / 0.95);
   --shadow-glow: 0 0 42px -6px hsl(198 93% 60% / 0.35);
+  --scrollbar-thumb: 217 33% 22%;
 
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+
+  --primary: 199 89% 38%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 210 40% 94%;
+  --secondary-foreground: 222 47% 11%;
+
+  --muted-foreground: 215 16% 40%;
+
+  --border: 214 32% 86%;
+  --ring: 199 89% 38%;
+
+  --gradient-card: linear-gradient(160deg, hsl(0 0% 100%) 0%, hsl(210 40% 97%) 100%);
+  --gradient-hero: radial-gradient(90% 70% at 15% 0%, hsl(198 93% 60% / 0.12) 0%, transparent 60%),
+    radial-gradient(80% 60% at 100% 10%, hsl(217 91% 60% / 0.08) 0%, transparent 55%),
+    linear-gradient(180deg, hsl(210 40% 99%) 0%, hsl(214 40% 96%) 100%);
+  --gradient-primary: linear-gradient(135deg, hsl(198 90% 40%) 0%, hsl(199 89% 34%) 100%);
+  --gradient-line: linear-gradient(180deg, hsl(198 89% 38% / 0.7) 0%, hsl(214 32% 86%) 100%);
+
+  --shadow-card: 0 18px 40px -24px hsl(222 47% 11% / 0.25);
+  --shadow-glow: 0 0 36px -8px hsl(198 89% 38% / 0.22);
+  --scrollbar-thumb: 214 20% 75%;
+}
+
+.theme-icon-sun {
+  display: inline-flex;
+}
+
+.theme-icon-moon {
+  display: none;
+}
+
+[data-theme="light"] .theme-icon-sun {
+  display: none;
+}
+
+[data-theme="light"] .theme-icon-moon {
+  display: inline-flex;
 }
 
 /* ---------------------------------------------------------------- base ---- */
@@ -42,6 +91,7 @@
 }
 
 html {
+  color-scheme: dark;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
@@ -75,7 +125,7 @@ section[id] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: hsl(217 33% 22%);
+  background-color: hsl(var(--scrollbar-thumb));
   border: 2px solid hsl(var(--background));
   border-radius: 9999px;
 }

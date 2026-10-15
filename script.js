@@ -14,6 +14,52 @@
     }
   };
 
+  function initThemeToggle() {
+    var root = document.documentElement;
+    var buttons = Array.prototype.slice.call(
+      document.querySelectorAll("#theme-toggle, #theme-toggle-mobile")
+    );
+    var themeColor = document.querySelector('meta[name="theme-color"]');
+
+    if (!buttons.length) {
+      return;
+    }
+
+    var updateTheme = function (theme) {
+      root.dataset.theme = theme;
+      var nextTheme = theme === "dark" ? "light" : "dark";
+      var label = "Cambiar a modo " + (nextTheme === "light" ? "claro" : "oscuro");
+
+      buttons.forEach(function (button) {
+        button.setAttribute("aria-label", label);
+        button.setAttribute("title", label);
+        var text = button.querySelector("span");
+        if (text) {
+          text.textContent = label;
+        }
+      });
+
+      if (themeColor) {
+        themeColor.setAttribute("content", theme === "dark" ? "#0b1120" : "#f8fafc");
+      }
+      renderIcons();
+    };
+
+    updateTheme(root.dataset.theme === "light" ? "light" : "dark");
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+        try {
+          localStorage.setItem("theme", nextTheme);
+        } catch (error) {
+          console.error("No se pudo guardar la preferencia de tema.", error);
+        }
+        updateTheme(nextTheme);
+      });
+    });
+  }
+
   /* ------------------------------------------------------------ móvil ---- */
   function initMobileMenu() {
     var panel = document.getElementById("mobile-menu");
@@ -102,6 +148,7 @@
 
   /* ------------------------------------------------------------- init ---- */
   function init() {
+    initThemeToggle();
     renderIcons();
     initMobileMenu();
     initActiveSection();

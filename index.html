@@ -8,7 +8,22 @@
   <meta name="description"
     content="Desarrollador Backend Semi-Senior en Córdoba, Argentina. PHP, Laravel, Node.js/NestJS, APIs REST, MVC, POO y bases de datos relacionales. CV interactivo con experiencia, proyectos y contacto directo." />
   <meta name="author" content="Samuel Oliva" />
-  <meta name="theme-color" content="#0b1120" />
+  <meta name="theme-color" content="#f8fafc" />
+  <script>
+    (function () {
+      var theme;
+      try {
+        theme = localStorage.getItem("theme");
+      } catch (error) {
+        console.warn("No se pudo leer la preferencia de tema guardada.", error);
+      }
+
+      if (theme !== "light" && theme !== "dark") {
+        theme = "light";
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
 
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="Samuel Oliva | Desarrollador Backend Semi-Senior (Ssr.)" />
@@ -104,6 +119,12 @@
           Descargar CV
         </a>
 
+        <button type="button" id="theme-toggle" class="btn btn-subtle btn-icon" aria-label="Cambiar a modo oscuro"
+          title="Cambiar a modo oscuro">
+          <i data-lucide="sun" class="theme-icon-sun" aria-hidden="true"></i>
+          <i data-lucide="moon" class="theme-icon-moon" aria-hidden="true"></i>
+        </button>
+
         <button type="button" id="menu-toggle" class="btn btn-subtle btn-icon lg:hidden"
           aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
           <i data-lucide="menu"></i>
@@ -147,6 +168,12 @@
           <i data-lucide="message-circle"></i>
           WhatsApp
         </a>
+        <button type="button" id="theme-toggle-mobile" class="btn btn-subtle w-full"
+          aria-label="Cambiar a modo oscuro">
+          <i data-lucide="sun" class="theme-icon-sun" aria-hidden="true"></i>
+          <i data-lucide="moon" class="theme-icon-moon" aria-hidden="true"></i>
+          <span>Cambiar a modo claro</span>
+        </button>
         <div class="flex gap-2">
           <a href="https://www.linkedin.com/in/samueloliva" target="_blank" rel="noopener noreferrer"
             class="btn btn-subtle flex-1">
